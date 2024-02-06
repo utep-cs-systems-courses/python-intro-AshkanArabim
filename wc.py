@@ -17,7 +17,7 @@ class FileParser:
 
     def _readchar(self):
         l = len(self._buffer)
-        if l == 0 or self._buffer_idx == l - 1:
+        if l == 0 or self._buffer_idx == l:
             self._loadbuffer()
         if len(self._buffer) == 0:
             return -1  # nothing left to read!
@@ -28,9 +28,11 @@ class FileParser:
         word = ""
         while True:
             ch = self._readchar()
+            # print(ch)  # debug
             if ch == -1: return -1
-            if not re.match(r"[a-zA-Z]", ch):
+            if re.match(r"[a-zA-Z]", ch) == None: # note: import
                 return word  # return word if non-alphabet char found
+            word += ch
     
     def get_next_word(self):
         return self._readword()
@@ -55,6 +57,7 @@ if __name__ == "__main__":
         word = parser.get_next_word()
         if word == -1: break  # break if no more words left
         if word == "": continue
+        print(word) # debug
         word_counts[word] = word_counts.get(word, 0) + 1
         
     # print words and counts to output file

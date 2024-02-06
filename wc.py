@@ -3,7 +3,7 @@ import re
 import argparse
 
 
-# this will handle all the complexity of counting words in a file
+# this will handle all the complexity of reading words from a file
 class FileParser:
     def __init__(self, sourcepath: str):
         self._buffer = ""
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     # parse arguments
     argparser = argparse.ArgumentParser(
         prog="wc-py",
-        description="python implementation of unix `wc`",
+        description="Python implementation of unix `wc`",
     )
     argparser.add_argument("input_file")
     argparser.add_argument("output_file")

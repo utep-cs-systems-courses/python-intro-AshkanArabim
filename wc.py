@@ -28,9 +28,8 @@ class FileParser:
         word = ""
         while True:
             ch = self._readchar()
-            # print(ch)  # debug
             if ch == -1: return -1
-            if re.match(r"[a-zA-Z]", ch) == None: # note: import
+            if re.match(r"[a-zA-Z]", ch) == None:
                 return word  # return word if non-alphabet char found
             word += ch
     
@@ -57,7 +56,6 @@ if __name__ == "__main__":
         word = parser.get_next_word()
         if word == -1: break  # break if no more words left
         if word == "": continue
-        print(word) # debug
         word_counts[word] = word_counts.get(word, 0) + 1
         
     # print words and counts to output file
